@@ -1,0 +1,22 @@
+{
+    "name": "carltonwhitehead/phava",
+    "type": "library",
+    "description": "Phava is a utility library for PHP inspired by Guava",
+    "keywords": ["utility","library"],
+    "homepage": "http://github.com/carltonwhitehead/peppercorn",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Carlton Whitehead",
+            "email": "cebesius86@gmail.com",
+            "homepage": "http://github.com/carltonwhitehead",
+            "role": "developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-0": { "Phava": "." }
+    }
+}
