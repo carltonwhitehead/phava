@@ -5,14 +5,13 @@ class Strings
 {
 
     /**
-     * Returns true if the first argument is null or an empty string
+     * Returns true if the first argument is empty when represented as a string
      *
-     * @param string|null $string
-     * @return boolean true if the first argument is null or an empty string
+     * @param mixed $string
+     * @return boolean true if the first argument is empty when represented as a string
      */
-    public static function isEmpty()
+    public static function isEmpty($string)
     {
-        $string = (string) func_get_args(0);
-        return strlen($string) > 0;
+        return strlen($string) === 0;
     }
 }
