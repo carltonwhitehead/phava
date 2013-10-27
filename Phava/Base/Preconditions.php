@@ -7,7 +7,6 @@ use Phava\Exception\IllegalStateException;
 class Preconditions
 {
 
-    const ERROR_ARGUMENT = 'argument did not satisfy precondition';
     /**
      * Ensures the truth of an expression involving one or more parameters to the
      * calling method.
@@ -20,14 +19,14 @@ class Preconditions
     public static function checkArgument($expression, $errorMessage = null)
     {
         if (! $expression) {
+            $defaultError = 'argument did not satisfy precondition';
             throw new IllegalArgumentException(
                 is_null($errorMessage)
-                ? self::ERROR_ARGUMENT : $errorMessage
+                ? $defaultError : $errorMessage
             );
         }
     }
 
-    const ERROR_ARGUMENT_IS_INTEGER = '$argument was not an integer';
     /**
      * Ensures the argument passed to the calling method is an integer.
      *
@@ -37,14 +36,14 @@ class Preconditions
     public static function checkArgumentIsInteger($argument, $errorMessage = null)
     {
         if (! is_integer($var)) {
+            $defaultError = '$argument was not an integer';
             throw new IllegalArgumentException(
                 is_null($errorMessage)
-                ? self::ERROR_ARGUMENT_IS_INTEGER : $errorMessage
+                ? $defaultError : $errorMessage
             );
         }
     }
 
-    const ERROR_ARGUMENT_IS_KEY_IN_ARRAY = '$argument is not a key in $array';
     /**
      * Ensures the argument passed to the calling method is a key in the array
      *
@@ -56,14 +55,14 @@ class Preconditions
     public static function checkArgumentIsKeyInArray($argument, $array, $errorMessage = null)
     {
         if (! array_key_exists($argument, $array)) {
+            $defaultError = '$argument is not a key in $array';
             throw new IllegalArgumentException(
                 is_null($errorMessage)
-                ? self::ERROR_ARGUMENT_IS_KEY_IN_ARRAY : $errorMessage
+                ? $defaultError : $errorMessage
             );
         }
     }
 
-    const ERROR_CHECK_STATE = 'instance state did not satisfy precondition';
     /**
      * Ensures the truth of an expression involving the state of the calling
      * instance, but not involving any parameters to the calling method.
@@ -76,9 +75,10 @@ class Preconditions
     public static function checkState($expression, $errorMessage = null)
     {
         if (! $expression) {
+            $defaultError = 'instance state did not satisfy precondition';
             throw new IllegalStateException(
                 is_null($errorMessage)
-                ? self::ERROR_CHECK_STATE : $errorMessage
+                ? $defaultError : $errorMessage
             );
         }
     }
