@@ -35,7 +35,7 @@ class Preconditions
      */
     public static function checkArgumentIsInteger($argument, $errorMessage = null)
     {
-        if (! is_integer($var)) {
+        if (! is_integer($argument)) {
             $defaultError = '$argument was not an integer';
             throw new IllegalArgumentException(
                 is_null($errorMessage)
