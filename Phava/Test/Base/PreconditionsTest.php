@@ -11,7 +11,7 @@ class PreconditionsTest extends \PHPUnit_Framework_TestCase
     public function testCheckArgumentWithTrue() {
         try {
             Preconditions::checkArgument(true);
-        } catch (Exception $unexpected) {
+        } catch (\Exception $unexpected) {
             $this->fail('Preconditions::checkArgument threw an exception when passed true');
         }
     }
@@ -48,7 +48,7 @@ class PreconditionsTest extends \PHPUnit_Framework_TestCase
     public function testCheckArgumentIsIntegerWithIntegers($var) {
         try {
             Preconditions::checkArgumentIsInteger($var);
-        } catch (Exception $unexpected) {
+        } catch (\Exception $unexpected) {
             $this->fail('Preconditions::checkArgumentIsInteger threw unexpectedly');
         }
     }
