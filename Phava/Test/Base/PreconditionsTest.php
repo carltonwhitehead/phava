@@ -93,6 +93,50 @@ class PreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @param mixed $var
+     *
+     * @dataProvider providerStrings
+     */
+    public function testCheckArgumentIsStringWithStrings($var)
+    {
+        try {
+            Preconditions::checkArgumentIsString($var);
+        } catch (\Exception $unexpected) {
+            $this->fail('Preconditions::checkArgumentIsString threw unexpectedly');
+        }
+    }
+
+    public function providerStrings()
+    {
+        return array(
+            array(""),
+            array("string with content")
+        );
+    }
+
+    /**
+     * @param mixed $var
+     *
+     * @dataProvider providerNonStrings
+     */
+    public function testCheckArgumentIsStringWithNonStrings($var)
+    {
+        $this->setExpectedException(self::ILLEGAL_ARGUMENT_EXCEPTION);
+        Preconditions::checkArgumentIsString($var);
+    }
+
+    public function providerNonStrings()
+    {
+        return array(
+            array(null),
+            array(0),
+            array(0.1),
+            array(array()),
+            array(new \stdClass())
+        );
+    }
+
+    /**
      * @param mixed $key
      * @param array $array
      *

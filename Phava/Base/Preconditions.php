@@ -44,6 +44,18 @@ class Preconditions
         }
     }
 
+    public static function checkArgumentIsString($argument, $errorMessage = null)
+    {
+        if (! is_string($argument))
+        {
+            $defaultError = '$argument was not a string';
+            throw new IllegalArgumentException(
+                is_null($errorMessage)
+                ? $defaultError : $errorMessage
+            );
+        }
+    }
+
     /**
      * Ensures the argument passed to the calling method is a key in the array
      *
